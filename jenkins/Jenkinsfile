@@ -41,5 +41,15 @@ pipeline {
                 }
             }
         }
+        stage('Email notification'){
+            agent{
+                label 'docker'
+            }
+            steps {
+                emailext body: 'Build execution commpleted! ', subject: 'Build execution commpleted! ', to: 'gig.georgiev@gmail.com'
+            }
+
+        }
+
     }
 }
